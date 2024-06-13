@@ -1,0 +1,40 @@
+pg_dump -cC --inserts -U freecodecamp worldcup > worldcup.sql
+psql -U postgres < worldcup.sql
+
+
+-------------------------Bash Commands----------------
+
+to search something from a file
+>> grep -n 'meow[a-z]' kitty_ipsum_1.txt
+sed is used for replace existing value with new value
+>>grep -n 'meow[a-z]*' kitty_ipsum_1.txt|sed 's/[0-9]+/1/'
+to find line number of matching pattern 
+>>grep -n 'meow[a-z]*' kitty_ipsum_1.txt|sed -E 's/([0-9]+).*/\1/'
+Use grep with the --color flag to see all the words that start with cat in the same file
+>>grep --color 'cat[a-z]*' kitty_ipsum_1.txt
+
+Use echo with the -e flag to append Number of times cat, cats, or catnip appears: to the kitty_info.txt file. 
+Put a new line at the beginning of the text like the other lines.
+>>echo -e '\nNumber of times cat, cats, or catnip appears:' >> kitty_info.txt
+use grep with the correct flag to put all the matches of the cat[a-z]* pattern on their own line.
+>>grep -o 'cat[a-z]*' kitty_ipsum_1.txt
+wc is used to find the count of word line and latter
+>>grep -o 'cat[a-z]*' kitty_ipsum_1.txt | wc
+That's a count of how many times cat, cats, or catnip appears in the file. Enter the same command and append the count to the kitty_info.txt file.
+>>grep -o 'cat[a-z]*' kitty_ipsum_1.txt | wc -l
+use echo to add the text Lines that they appear on: to the kitty_info.txt file again. Place a new line in front of the text like before.
+>>echo -e "\nLines that they appear on:" >> kitty_info.txt
+>>grep -n 'cat[a-z]*' kitty_ipsum_1.txt
+That shows you the line numbers and text. You will have to use sed again to extract only the line numbers. Pipe the output of the last command into sed to do that. As a reminder, the sed pattern was 's/([0-9]+).*/\1/'.
+>>grep -n 'cat[a-z]*' kitty_ipsum_1.txt| sed -E 's/([0-9]+).*/\1/'
+to find the line numbers in a file 
+cat kitty_ipsum_2.txt|wc -l
+to find the word count using redirection method 
+>> wc -w < kitty_ipsum_2.txt>>kitty_info.txt
+Use grep and wc in the terminal to append the suggested number to the kitty_info.txt file.
+>>grep --color -o  'meow[a-z]*' kitty_ipsum_2.txt | wc -l>>kitty_info.txt
+
+>> ./translate.sh kitty_ipsum_1.txt| grep --color -E 'dog[a-z]*|woof[a-z]*'
+
+to find the diffrence between two files 
+>>diff --color kitty_ipsum_1.txt doggy_ipsum_1.txt
